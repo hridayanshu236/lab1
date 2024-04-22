@@ -28,5 +28,6 @@ class Linkedlist{
 
         bool isEmpty();
         void head(int &data);
+        void print(char separator);
 };
 
