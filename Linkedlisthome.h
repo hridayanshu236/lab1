@@ -31,4 +31,5 @@ class LinkedList{
         void removeFromTail();
         void remove(int);
         void search(int);
+        bool retrieve(int, Node **);
 };

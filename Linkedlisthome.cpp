@@ -126,6 +126,21 @@ void LinkedList::search(int info){ //Searches for the required data and returns 
     }
 }
 
+bool LinkedList::retrieve(int data, Node** outputPtr) {
+    Node* p = HEAD; // Initialize pointer p to traverse the list starting from HEAD
+
+    while (p != nullptr && p->info != data) { //Traversing until the required info is found
+        p = p->next;
+    }
+
+    if (p == nullptr) { // If p is nullptr, it means the data was not found in the list
+        *outputPtr = nullptr; // Set outputPtr to nullptr
+        return false; // Return false to indicate data not found
+    } else {
+        *outputPtr = p; // Set outputPtr to point to the node containing the data
+        return true; // Return true to indicate data found
+    }
+}
 
 int main(){
     LinkedList list1;
@@ -138,5 +153,14 @@ int main(){
     list1.removeFromHead();
     list1.removeFromTail();
     list1.printlist();
+    Node* outputPtr; // Pointer to store the address of the node containing the data
+    bool found = list1.retrieve(3, &outputPtr); // Call the retrieve function
+    // Checking if the data was found
+    if (found) {
+        cout << "Data found: " << outputPtr->info << endl;
+    } else {
+        cout << "Data not found" << endl;
+    }
+
 
 }
