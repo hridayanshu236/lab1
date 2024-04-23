@@ -12,10 +12,10 @@ void LinkedList::printlist()// It displays the data of the node in the list
         }
 bool LinkedList::isEmpty(){ //Checks if the Node is empty
     if (HEAD==NULL){
-        return true;
+        return true; //returns true if it is empty
     }
     else{
-        return false;
+        return false;//returns false if it is not empty
     }
 }
 
@@ -60,35 +60,37 @@ void LinkedList::removeFromHead(){ //Removing node from head
 
 void LinkedList::removeFromTail(){ //Removing from TAIL
     if(!isEmpty()){
-        Node* newNode = TAIL;
+        Node* newNode = TAIL; //creating a node pointer pointing to the TAIL of the linked list
         if(HEAD==TAIL){
              HEAD=TAIL=NULL;
         }
         else{
-            Node *pred = HEAD;
-            while(pred->next!=TAIL){
+            Node *pred = HEAD; //Creating a predecessor node pointer pointing to the HEAD of the linked list
+
+            //Traversing the predecessor pointer until the second last node of the linked list
+            while(pred->next!=TAIL){  
             pred = pred->next;
             }
         TAIL = pred;
         TAIL->next = NULL;
         }
-         delete newNode;
+         delete newNode; 
     }
-    else cout<<"Empty"<<endl;
+    else cout<<"Empty"<<endl; 
 }
 
-void LinkedList::remove(int info){
-    if(!isEmpty()){
+void LinkedList::remove(int info){ //Function to remove the desired data from the linked list
+    if(!isEmpty()){ 
         if(HEAD->info == info){
-            removeFromHead();
+            removeFromHead(); //calling the removeFromHead function to remove the info if found in head of the linked list
         }
-        else if(TAIL->info == info){
+        else if(TAIL->info == info){ //calling the removeFromTail function to remove the info if found in tail of the linked list
             removeFromTail();
         }
         else{
-            Node* newNode = HEAD->next;
-            Node* pred = HEAD;
-            while(pred->next!=NULL){
+            Node* newNode = HEAD->next; //creating a newNode pointer which points to the second node of the list
+            Node* pred = HEAD; //creating a predecessor pointer pointing to the head of the list
+            while(pred->next!=NULL){ 
                 if(newNode->info == info)break;
                 else{
                     pred = pred->next;
@@ -143,21 +145,21 @@ bool LinkedList::retrieve(int data, Node** outputPtr) {
 }
 
 int main(){
-    LinkedList list1;
-    list1.addToHead(2);
-    list1.addToTail(3);
-    list1.addToTail(4);
+    LinkedList list1; //Creating an object list1 of the class Node i.e creating a linked list
+    list1.addToHead(2); //adding 2 to the head
+    list1.addToTail(3); //adding 3 to the tail
+    list1.addToTail(4); //adding 4 to the tail
     list1.printlist();
-    list1.search(5);
-    list1.search(2);
+    list1.search(5); //searcing for the info 5
+    list1.search(2); //searching for the info 2
     list1.removeFromHead();
     list1.removeFromTail();
     list1.printlist();
     Node* outputPtr; // Pointer to store the address of the node containing the data
-    bool found = list1.retrieve(3, &outputPtr); // Call the retrieve function
+    bool found = list1.retrieve(3, &outputPtr); // Call the retrieve function and search for 3
     // Checking if the data was found
     if (found) {
-        cout << "Data found: " << outputPtr->info << endl;
+        cout << "Data found: " << outputPtr->info << endl; //printing the required info if found
     } else {
         cout << "Data not found" << endl;
     }
