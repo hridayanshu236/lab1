@@ -1,7 +1,8 @@
 #include<iostream>
 #include"Linkedlisthome.h"
 using namespace std;
-void LinkedList::printlist()// it displays the data in the list
+
+void LinkedList::printlist()// It displays the data of the node in the list
         {
             Node * newNode = HEAD;
             while(newNode!=NULL){ //Traversing until the newNode points to the last node
@@ -107,14 +108,33 @@ void LinkedList::remove(int info){
     }
 }
 
+void LinkedList::search(int info){ //Searches for the required data and returns true if it is found 
+    Node* newNode = HEAD;
+    bool found = false; //flag to indicate whether the info is found
+    if(!isEmpty()){
+        while(newNode!=NULL){
+            if(newNode->info == info){
+                cout<<"Info found"<<endl;
+                found = true; //updating the flag once the info is found
+                break; // breaking out of the while loop
+            }
+            newNode = newNode->next;
+        } 
+        if(!found){ //if the required info is not found
+            cout<<"Info not found"<<endl;
+        }
+    }
+}
+
 
 int main(){
     LinkedList list1;
-    // list1.printlist();
     list1.addToHead(2);
     list1.addToTail(3);
     list1.addToTail(4);
     list1.printlist();
+    list1.search(5);
+    list1.search(2);
     list1.removeFromHead();
     list1.removeFromTail();
     list1.printlist();
