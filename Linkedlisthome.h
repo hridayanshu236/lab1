@@ -17,7 +17,10 @@ class LinkedList{
         Node* TAIL;     //Creating a TAIL node for the linked list
 
     public:
-        LinkedList(){}
+        LinkedList(){
+            HEAD = nullptr;
+            TAIL = nullptr;
+        }
         ~LinkedList(){}
         void printlist();
         bool isEmpty();

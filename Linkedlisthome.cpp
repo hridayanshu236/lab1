@@ -3,14 +3,13 @@
 using namespace std;
 void LinkedList::printlist()// it displays the data in the list
         {
-            Node * newNode = new Node();
-            newNode = HEAD;
-            while(newNode!=NULL){
-                 cout<<newNode->info<<endl;
+            Node * newNode = HEAD;
+            while(newNode!=NULL){ //Traversing until the newNode points to the last node
+                 cout<<newNode->info<<endl; //Printing the required info of the node.
                  newNode = newNode->next;
             }
         }
-bool LinkedList::isEmpty(){
+bool LinkedList::isEmpty(){ //Checks if the Node is empty
     if (HEAD==NULL){
         return true;
     }
@@ -20,8 +19,8 @@ bool LinkedList::isEmpty(){
 }
 
 void LinkedList::addToHead(int info){ //adding node from Head
-    Node* newNode = new Node();
-    newNode->info=info;
+    Node* newNode = new Node(info);
+    newNode->info=info; 
     newNode->next = HEAD;
     HEAD = newNode;
     if(TAIL==NULL){
@@ -30,7 +29,7 @@ void LinkedList::addToHead(int info){ //adding node from Head
 }
 
 void LinkedList::addToTail(int info){ //adding node from Tail
-    Node *newNode = new Node();
+    Node *newNode = new Node(info);
     if(TAIL==NULL){
         HEAD = newNode;
         newNode->info = info;
@@ -40,28 +39,27 @@ void LinkedList::addToTail(int info){ //adding node from Tail
     else{
         newNode->info = info;
         newNode->next = NULL;
+        TAIL->next = newNode;
         TAIL = newNode;
     }
 }
 void LinkedList::traverse(){ //Traversing the given linked list
-            Node* newNode = new Node();
+            Node* newNode = HEAD;
             while (newNode->next!=NULL)
             {
                 newNode=newNode->next;
             }
 }
 
-void LinkedList::removeFromHead(){
-    Node* newNode = new Node();
-    newNode = HEAD;
+void LinkedList::removeFromHead(){ //Removing node from head
+    Node* newNode = HEAD;
     HEAD = HEAD->next;
     delete newNode;
 }
 
-void LinkedList::removeFromTail(){
+void LinkedList::removeFromTail(){ //Removing from TAIL
     if(!isEmpty()){
-        Node* newNode = new Node();
-        newNode = TAIL;
+        Node* newNode = TAIL;
         if(HEAD==TAIL){
              HEAD=TAIL=NULL;
         }
@@ -79,7 +77,7 @@ void LinkedList::removeFromTail(){
 }
 
 void LinkedList::remove(int info){
-    if(!isEmpty){
+    if(!isEmpty()){
         if(HEAD->info == info){
             removeFromHead();
         }
@@ -87,16 +85,22 @@ void LinkedList::remove(int info){
             removeFromTail();
         }
         else{
-            Node* newNode = new Node();
-            newNode = HEAD->next;
-            Node* pred = new Node();
-            pred = HEAD; 
+            Node* newNode = HEAD->next;
+            Node* pred = HEAD;
             while(pred->next!=NULL){
                 if(newNode->info == info)break;
                 else{
                     pred = pred->next;
                     newNode= newNode->next;
                 }
+            }
+            if (newNode!=NULL){
+                pred->next = newNode->next;
+                delete newNode;
+            }
+            else{
+                TAIL = pred;
+                delete newNode;
             }
             
         }
@@ -106,9 +110,13 @@ void LinkedList::remove(int info){
 
 int main(){
     LinkedList list1;
-    list1.printlist();
+    // list1.printlist();
     list1.addToHead(2);
     list1.addToTail(3);
+    list1.addToTail(4);
+    list1.printlist();
+    list1.removeFromHead();
+    list1.removeFromTail();
     list1.printlist();
 
 }
