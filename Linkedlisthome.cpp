@@ -46,11 +46,38 @@ void LinkedList::addToTail(int info){ //adding node from Tail
 }
 void LinkedList::traverse(){ //Traversing the given linked list
             Node* newNode = HEAD;
-            while (newNode->next!=NULL)
+            while (newNode!=NULL)
             {
+                cout<<newNode->info<<endl;
                 newNode=newNode->next;
             }
 }
+void LinkedList::addAfter(int predecessorInfo, int newData) {
+    // Check if the list is empty
+    if (isEmpty()) {
+        std::cout << "List is empty. Cannot add after predecessor." << std::endl;
+        return;
+    }
+
+    Node* predecessor = nullptr;
+    // Search for the predecessor node
+    if (!retrieve(predecessorInfo, &predecessor)) {
+        std::cout << "Predecessor node not found." << std::endl;
+        return;
+    }
+
+    // Create a new node with the new data
+    Node* newNode = new Node(newData);
+
+    // Update the pointers to add the new node after the predecessor
+    newNode->next = predecessor->next;
+    predecessor->next = newNode;
+
+    // If the predecessor was the tail, update the tail pointer
+    if (predecessor == TAIL)
+        TAIL = newNode;
+}
+
 
 void LinkedList::removeFromHead(){ //Removing node from head
     Node* newNode = HEAD;
@@ -146,15 +173,32 @@ bool LinkedList::retrieve(int data, Node** outputPtr) {
 
 int main(){
     LinkedList list1; //Creating an object list1 of the class Node i.e creating a linked list
+    if(list1.isEmpty()){
+        cout<<"The list is empty"<<endl;
+    }else{
+        cout<<"The list is not empty"<<endl;
+    }
     list1.addToHead(2); //adding 2 to the head
+    list1.printlist();
     list1.addToTail(3); //adding 3 to the tail
     list1.addToTail(4); //adding 4 to the tail
+    list1.traverse();
+    list1.addAfter(3,5);
+    cout<<"After adding 5"<<endl;
+    list1.printlist();
+    list1.search(5); //searcing for the info 5
+    list1.search(1); //searching for the info 2
+    list1.remove(3);
+    cout<<"After removing 3"<<endl;
+    list1.printlist();
+    list1.removeFromHead();
+    cout<<"After removing from head"<<endl;
+    list1.printlist();
+    list1.removeFromTail();
+    cout<<"After removing from tail"<<endl;
     list1.printlist();
     list1.search(5); //searcing for the info 5
     list1.search(2); //searching for the info 2
-    list1.removeFromHead();
-    list1.removeFromTail();
-    list1.printlist();
     Node* outputPtr; // Pointer to store the address of the node containing the data
     bool found = list1.retrieve(3, &outputPtr); // Call the retrieve function and search for 3
     // Checking if the data was found
@@ -163,6 +207,4 @@ int main(){
     } else {
         cout << "Data not found" << endl;
     }
-
-
 }

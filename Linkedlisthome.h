@@ -29,6 +29,7 @@ class LinkedList{
         void traverse();
         void removeFromHead();
         void removeFromTail();
+        void addAfter(int, int);
         void remove(int);
         void search(int);
         bool retrieve(int, Node **);
