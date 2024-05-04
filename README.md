@@ -17,6 +17,8 @@ A linked list is a linear data structure where elements are stored in a sequence
 - **Remove**: Removes the node containing the specified data from the list.
 - **Search**: Searches for the specified data in the list.
 - **Retrieve**: Retrieves the data at the specified index in the list.
+- **AddAfter**: Adds node after a predecessor.
+- **isEmpty**: Checks if the list is empty or not.
 
 ## How to Use
 
