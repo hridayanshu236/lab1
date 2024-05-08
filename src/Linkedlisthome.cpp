@@ -77,6 +77,9 @@ void LinkedList::addAfter(int predecessorInfo, int newData) {
     if (predecessor == TAIL)
         TAIL = newNode;
 }
+int LinkedList::returnHead(){
+    return HEAD->info;
+}
 
 
 void LinkedList::removeFromHead(){ //Removing node from head

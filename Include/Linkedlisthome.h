@@ -22,6 +22,7 @@ class LinkedList{
             TAIL = nullptr;
         }
         ~LinkedList(){} //Destructor of the class LinkedList
+        int returnHead();
         void printlist();
         bool isEmpty();
         void addToHead(int info);
