@@ -1,9 +1,11 @@
-#include "Linkedlisthome.h"
+// #ifndef STACK_H
+// #define STACK_H
+#include "LinkedList.h"
 
 class Stack{
     public:
         virtual bool isEmpty() =0;
-        virtual void push(int data) = 0;
+        virtual void push(int info) = 0;
         virtual int pop () = 0;
 
 };
@@ -11,9 +13,9 @@ class Stack{
 class LinkedListStack : public Stack {
     public:
         LinkedListStack();
-        ~LinkedListStack();
+        ~LinkedListStack(){}
         virtual bool isEmpty();
-        virtual void push(int data);
+        virtual void push(int info);
 
         virtual int pop();
         virtual int top();
@@ -21,3 +23,5 @@ class LinkedListStack : public Stack {
     private:
         LinkedList list1;
 };
+
+// 
