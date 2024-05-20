@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../Include/LinkedListStack.h"
+#include "../Include/IStack.h"
 using namespace std;
 
 LinkedListStack::LinkedListStack() {}
