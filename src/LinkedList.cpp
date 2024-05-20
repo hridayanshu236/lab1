@@ -83,7 +83,12 @@ int LinkedList::returnHead(){
     }
     return -1;
 }
-
+int LinkedList::returnTail(){
+    if (TAIL != NULL) {
+        return TAIL->info;
+    }
+    return -1;
+}
 
 void LinkedList::removeFromHead(){ //Removing node from head
     Node* newNode = HEAD;

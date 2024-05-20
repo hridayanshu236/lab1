@@ -23,6 +23,7 @@ class LinkedList{
         }
         ~LinkedList(){} //Destructor of the class LinkedList
         int returnHead();
+        int returnTail();
         void printlist();
         bool isEmpty();
         void addToHead(int info);
