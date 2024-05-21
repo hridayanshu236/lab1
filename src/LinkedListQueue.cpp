@@ -1,10 +1,10 @@
 #include "../Include/IQueue.h"
 #include<iostream>
-bool LinkedListQueue::isEmpty() {
+bool LinkedListQueue::isEmpty() { //CChecks if the Queue is empty or not using LinkedList function
     return list.isEmpty();
 }
 
-void LinkedListQueue::enqueue(int info) {
+void LinkedListQueue::enqueue(int info) { //Uses addToTail function from linked list
     list.addToTail(info); 
 }
 
@@ -13,7 +13,7 @@ int LinkedListQueue::dequeue() {
          std::cout << "Queue is empty" << std::endl;
     }
     int frontInfo = list.returnHead();
-    list.removeFromHead();
+    list.removeFromHead();//Uses removeFromHead() function from Linked List to dequeue
     return frontInfo;
 }
 
@@ -21,13 +21,13 @@ int LinkedListQueue::front() {
     if (isEmpty()) {
         std::cout << "Queue is empty" << std::endl;
     }
-    return list.returnHead();
+    return list.returnHead(); //Uses returnHead from linked list
 }
 int LinkedListQueue::rear() {
     if (isEmpty()) {
         std::cout << "Queue is empty" << std::endl;
     }
-    return list.returnTail();
+    return list.returnTail(); //uses returnTail function from Linked List
 }
 int main(){
        LinkedListQueue llQueue;

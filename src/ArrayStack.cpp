@@ -9,7 +9,10 @@ bool ArrayStack::isEmpty()
 {
     return topIndex == -1;
 }
-
+bool ArrayStack::isFull() const
+{
+    return topIndex == size - 1;
+}
 void ArrayStack::push(int info)
 {
     if (topIndex + 1 >= size)

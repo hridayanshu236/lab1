@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-class Queue
+class Queue //Interface class of Queue
 {
 public:
     virtual bool isEmpty() = 0;
@@ -9,7 +9,7 @@ public:
     virtual int rear() = 0;
     virtual ~Queue() = default;
 };
-class LinkedListQueue : public Queue
+class LinkedListQueue : public Queue //class LinkedListQueue inherits interface class Queue
 {
 public:
     LinkedListQueue() = default;
@@ -24,12 +24,12 @@ private:
     LinkedList list;
 };
 
-class ArrayQueue : public Queue
+class ArrayQueue : public Queue//class ArrayQueue inherits interface class Queue
 {
 private:
     int *data;
-    int frontIndex;
-    int backIndex;
+    int frontIndex; //keeps track of front index
+    int backIndex;//Keeps track of rear index
     int capacity;
     int size;
 

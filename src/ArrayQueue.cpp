@@ -7,24 +7,24 @@ ArrayQueue::ArrayQueue(int size) : capacity(size), frontIndex(0), backIndex(-1),
 
 ArrayQueue::~ArrayQueue()
 {
-    delete[] data;
+    delete[] data; //deleting the constructor
 }
 
 bool ArrayQueue::isEmpty()
 {
-    return size == 0;
+    return size == 0; //returns true if size is 0
 }
 
 bool ArrayQueue::isFull() const
 {
-    return size == capacity;
+    return size == capacity; //returns true if size is full
 }
 
 void ArrayQueue::enqueue(int info)
 {
-    if (isFull())
+    if (isFull()) //Checks if queue is full or not
     {
-        throw std::overflow_error("Queue is full");
+        std::cout << "Queue is full" << std::endl;
     }
     if (backIndex == capacity - 1)
     {
@@ -77,7 +77,7 @@ int ArrayQueue::rear()
 
 int main()
 {
-    ArrayQueue arrQueue(5);
+    ArrayQueue arrQueue(5); //creating an object
     std::cout << "Testing ArrayQueue:" << std::endl;
 
     if (arrQueue.isEmpty())
@@ -85,7 +85,7 @@ int main()
         std::cout << "The queue is empty" << std::endl;
     }
 
-    arrQueue.enqueue(10);
+    arrQueue.enqueue(10); //adds element into the queue
     arrQueue.enqueue(20);
     arrQueue.enqueue(30);
     std::cout << "Front element: " << arrQueue.front() << std::endl;

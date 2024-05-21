@@ -6,7 +6,7 @@ LinkedListStack::LinkedListStack() {}
 
 bool LinkedListStack::isEmpty()
 {
-    if (list1.isEmpty())
+    if (list1.isEmpty()) //Checks if the linkedlist is empty or not using Linked List's function
     {
         return true;
     }
@@ -18,7 +18,7 @@ bool LinkedListStack::isEmpty()
 
 void LinkedListStack::push(int info)
 {
-    list1.addToHead(info);
+    list1.addToHead(info); //Uses addToHead function from LinkedList to push into stack
 }
 
 int LinkedListStack::pop()
@@ -26,7 +26,7 @@ int LinkedListStack::pop()
     if (!list1.isEmpty())
     {
         int topInfo = list1.returnHead();
-        list1.removeFromHead();
+        list1.removeFromHead(); //Uses removeFromHead() function from Linked List to pop from stack
         return topInfo;
     }
     else
@@ -40,7 +40,7 @@ int LinkedListStack::top()
 {
     if (!list1.isEmpty())
     {
-        return list1.returnHead();
+        return list1.returnHead(); //Uses return head from linkedlist to show the top element of stack
     }
     else
     {
